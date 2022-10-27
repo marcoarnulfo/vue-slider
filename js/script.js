@@ -37,18 +37,36 @@ createApp({
     },
     methods: {
         prevImage() {
+            const thumb = document.querySelectorAll(".thumb")
+            const currentThumb = thumb[this.immagineAttiva]
+            currentThumb.classList.remove("active")
             this.immagineAttiva--
             if (this.immagineAttiva < 0) {
                 this.immagineAttiva = this.slides.length - 1
             }
+            let nextThumb = thumb[this.immagineAttiva]
+            nextThumb.classList.add("active")
         },
         nextImage() {
-            console.log('slide to next image');
+            const thumb = document.querySelectorAll(".thumb")
+            const currentThumb = thumb[this.immagineAttiva]
+            currentThumb.classList.remove("active")
             this.immagineAttiva++
             if (this.immagineAttiva === this.slides.length) {
                 this.immagineAttiva = 0
             }
+            let nextThumb = thumb[this.immagineAttiva]
+            nextThumb.classList.add("active")
         },
+        /*
+        primaryImg(){
+            const test = document.querySelector(".item > img")
+            const test2 = document.querySelector(".thumbs > .active")
+            test.src= "./img/05.webp"
+            console.log(test);
+            console.log(test2);
+        }
+        */
     }
 }).mount('#app')
 
